@@ -149,4 +149,4 @@ This project is licensed under the MIT License.
 ---
 
 ## Author
-Crafted with passion by (Ivan Hirskyy](https://ivanhirskyy.github.io/)).
+Crafted with passion by [(Ivan Hirskyy](https://ivanhirskyy.github.io/))](https://ivanhirskyy.github.io/).
