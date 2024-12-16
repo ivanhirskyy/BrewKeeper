@@ -2,6 +2,8 @@
 
 BrewKeeper is a fun and visually appealing web application designed for beer enthusiasts to catalog their beer collection. With an intuitive interface, users can explore, organize, and expand their beer collection effortlessly. This project demonstrates best practices in frontend development, including responsive design, state management, and local data persistence.
 
+> **Note**: The logo is AI-generated, and everything else was built from scratch or using the mentioned technologies.
+
 ---
 
 ## Features
