@@ -11,12 +11,10 @@ BrewKeeper is a fun and visually appealing web application designed for beer ent
 1. **Collection Overview**:
 
    - Displays all beers in a responsive grid layout.
-   - Each beer card shows basic details (e.g., name, type, and image).
 
 2. **Detailed Beer View**:
 
    - Displays expanded details of a selected beer.
-   - Includes fields such as name, type, year, brewery, ABV, and description.
 
 3. **Add New Beers**:
    - Allows users to add custom beers to their collection.
@@ -84,7 +82,7 @@ Ensure you have the following installed:
    yarn dev
    ```
 
-   Open `http://localhost:3000` in your browser.
+   Open `http://localhost:5173/` in your browser.
 
 4. **Build for Production**
 

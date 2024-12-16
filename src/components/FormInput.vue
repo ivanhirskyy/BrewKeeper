@@ -2,7 +2,7 @@
   <div class="sm:col-span-3">
     <label :for="id" class="block text-sm font-medium text-gray-900" v-if="label">{{
       label
-    }}</label>
+    }} <span v-if="required" class="text-red-500">*</span></label>
     <div class="mt-1 relative flex items-center">
       <input
         :type

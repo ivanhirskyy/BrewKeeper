@@ -1,25 +1,24 @@
 <template>
   <button
     :type
-    class="rounded-md px-4 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    class="rounded-md px-4 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 transition-all focus-visible:outline-offset-2 flex items-center justify-center gap-1"
     :class="[variants[variant], sizes[size]]"
   >
-    <slot />
+    <slot></slot>
   </button>
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
-
 defineProps<{
   type?: 'button' | 'submit' | 'reset'
-  variant: 'primary' | 'secondary'
+  variant: 'primary' | 'secondary' | 'tertiary'
   size: 'sm' | 'md' | 'lg'
 }>()
 
 const variants = {
   primary: 'bg-amber-300 hover:bg-amber-200 text-amber-900 focus-visible:outline-amber-400',
-  secondary: 'bg-gray-600 hover:bg-gray-500 text-white focus-visible:outline-gray-600',
+  secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-950 focus-visible:outline-gray-600',
+  tertiary: 'bg-white hover:bg-amber-100 text-amber-800 focus-visible:outline-amber-600 border border-amber-300',
 }
 
 const sizes = {

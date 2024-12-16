@@ -2,7 +2,7 @@
   <div class="sm:col-span-3">
     <label class="block text-sm font-medium text-gray-900" v-if="label" :for="id">{{
       label
-    }}</label>
+    }} <span v-if="required" class="text-red-500">*</span></label>
     <div class="mt-1 grid grid-cols-1">
       <select
         :id

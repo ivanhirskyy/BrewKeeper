@@ -112,6 +112,27 @@ export const useBeerStore = defineStore('beer', () => {
     beers.value.splice(index, 1)
     localStorage.setItem('beers', JSON.stringify(beers.value))
   }
+  function addReview(id: string, rating: number, comment: string) {
+    const beer = beers.value.find((beer) => beer.id === id)
+    if (beer) {
+      beer.reviews.push({
+        rating,
+        comment,
+      })
+      localStorage.setItem('beers', JSON.stringify(beers.value))
+    }
+  }
+
+  function getAverageRating(id: string) {
+    const beer = beers.value.find((beer) => beer.id === id)
+    console.log(beer)
+    if (beer) {
+      console.log(beer.reviews)
+      const sum = beer.reviews.reduce((acc, review) => acc + review.rating, 0)
+      return sum / beer.reviews.length
+    }
+    return 0
+  }
   function addRandomBeer() {
     const randomBeer = beerListRandom[Math.floor(Math.random() * beerListRandom.length)]
     beers.value.push(randomBeer)
@@ -125,6 +146,8 @@ export const useBeerStore = defineStore('beer', () => {
     sortBy,
     order,
     addBeer,
+    addReview,
+    getAverageRating,
     deleteBeer,
     addRandomBeer,
   }
