@@ -37,6 +37,7 @@ onBeforeUnmount(() => {
       <FormInput
         type="text"
         v-model="store.search"
+        name="search"
         :required="true"
         placeholder="Heineken"
         :icon="markRaw(MagnifyingGlassIcon)"
@@ -107,7 +108,8 @@ onBeforeUnmount(() => {
         </div>
       </template>
 
-      <TransitionGroup name="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <TransitionGroup name="list" >
         <BeerCard
           v-for="(beer, index) in store.filteredBeers"
           :key="index"
@@ -115,6 +117,7 @@ onBeforeUnmount(() => {
           :index="index"
         />
       </TransitionGroup>
+    </div>
   </div>
 </template>
 

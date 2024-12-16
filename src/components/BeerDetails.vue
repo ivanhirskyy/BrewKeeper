@@ -64,7 +64,7 @@ const averageRating = computed(() => {
           <TrashIcon class="w-4 h-4 ml-1" />
         </TheButton>
       </div>
-      <h4 class="text-lg font-semibold text-gray-800" v-if="beer.description">{{ beer.description }}</h4>
+      <h4 class="text-lg font-semibold text-gray-800 mt-1" v-if="beer.description">{{ beer.description }}</h4>
     </div>
     <div class="grid grid-cols-2 w-full gap-2">
       <p class="text-sm font-semibold text-gray-800">Type: <span class="font-normal">{{ beer.type }}</span></p>
@@ -102,8 +102,8 @@ const averageRating = computed(() => {
                 <StarIcon v-for="star in [0, 1, 2, 3, 4]" :key="star" :class="[rating >= star ? 'text-amber-500' : 'text-gray-200', 'size-5 shrink-0 cursor-pointer transition-all']" aria-hidden="true" @click="rating = star" />
               </div>
             </div>
-              <FormInput class="w-full" type="text" label="Name" v-model="name" placeholder="John Doe" required />
-              <FormTextarea class="w-full" label="Comment" v-model="review" placeholder="This beer is amazing!" required />
+              <FormInput class="w-full" type="text" label="Name" name="name" v-model="name" placeholder="John Doe" required />
+              <FormTextarea class="w-full" label="Comment" name="description" v-model="review" placeholder="This beer is amazing!" required />
               <div class="flex gap-2 mt-2">
                 <TheButton variant="secondary" type="button" size="sm" @click="closeReview();">
                   Cancel

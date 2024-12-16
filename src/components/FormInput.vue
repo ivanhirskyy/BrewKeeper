@@ -8,6 +8,7 @@
         :type
         :placeholder
         :id
+        :name
         v-model="value"
         :required
         autocomplete="given-name"
@@ -24,6 +25,7 @@ import { useId, type Component } from 'vue'
 
 defineProps<{
   label?: string
+  name: string
   type: string
   placeholder?: string
   required?: boolean

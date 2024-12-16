@@ -17,9 +17,18 @@ BrewKeeper is a fun and visually appealing web application designed for beer ent
    - Displays expanded details of a selected beer.
 
 3. **Add New Beers**:
+
    - Allows users to add custom beers to their collection.
    - Input fields include name, type, year, brewery, ABV, and description.
    - Includes simple HTML form validation to ensure data integrity.
+
+4. **Edit Beers**:
+
+   - Allows users to edit their beers information.
+
+5. **Delete Beers**:
+
+   - Allows users to delete their beers.
 
 ### Bonus Features
 

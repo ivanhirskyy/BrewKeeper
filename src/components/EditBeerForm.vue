@@ -3,6 +3,7 @@
     <h2 class="text-2xl font-bold mb-2">Edit Beer</h2>
     <FormInput
       label="Beer Name"
+      name="name"
       type="text"
       v-model="name"
       :required="true"
@@ -11,6 +12,7 @@
 
     <FormTextarea
       label="Description"
+      name="description"
       v-model="description"
       placeholder="A light, crisp, and refreshing beer."
     />
@@ -41,13 +43,14 @@
     />
     <FormInput
       label="Brewery"
+      name="brewery"
       type="text"
       v-model="brewery"
       placeholder="The Haystack Brewery"
       :required="true"
     />
 
-    <FormInput label="ABV" type="text" v-model="abv" placeholder="5.5" :required="true" />
+    <FormInput label="ABV" name="abv" type="text" v-model="abv" placeholder="5.5" :required="true" />
 
     <div class="mt-2 flex gap-2">
       <TheButton variant="secondary" type="button" size="md" @click="cancel">
