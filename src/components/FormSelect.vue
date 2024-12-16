@@ -1,6 +1,8 @@
 <template>
   <div class="sm:col-span-3">
-    <label class="block text-sm font-medium text-gray-900" :for="id">{{ label }}</label>
+    <label class="block text-sm font-medium text-gray-900" v-if="label" :for="id">{{
+      label
+    }}</label>
     <div class="mt-1 grid grid-cols-1">
       <select
         :id
@@ -34,7 +36,7 @@
 import { useId } from 'vue'
 
 defineProps<{
-  label: string
+  label?: string
   options: { value: string | number; label: string | number }[]
   required?: boolean
 }>()

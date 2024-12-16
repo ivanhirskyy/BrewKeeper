@@ -1,6 +1,6 @@
 import type { Beer } from '@/types'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const beerListRandom = [
   {
@@ -63,6 +63,9 @@ const beerListRandom = [
 
 export const useBeerStore = defineStore('beer', () => {
   const beers = ref<Beer[]>(JSON.parse(localStorage.getItem('beers') || '[]'))
+  const search = ref('')
+  const sortBy = ref('name') // name, type, year, brewery, abv
+  const order = ref('asc') // asc, desc
 
   /* export interface Beer {
     name: string
@@ -72,6 +75,34 @@ export const useBeerStore = defineStore('beer', () => {
     abv: number
     notes?: string
   } */
+
+  const filteredBeers = computed(() => {
+    return beers.value
+      .filter((beer) => {
+        return (
+          beer.name.toLowerCase().includes(search.value.toLowerCase()) ||
+          beer.type.toLowerCase().includes(search.value.toLowerCase()) ||
+          beer.year.toString().includes(search.value) ||
+          beer.brewery.toLowerCase().includes(search.value.toLowerCase()) ||
+          beer.abv.toString().includes(search.value)
+        )
+      })
+      .sort((a, b) => {
+        let comparison = 0
+        if (sortBy.value === 'name') {
+          comparison = a.name.localeCompare(b.name)
+        } else if (sortBy.value === 'type') {
+          comparison = a.type.localeCompare(b.type)
+        } else if (sortBy.value === 'year') {
+          comparison = a.year - b.year
+        } else if (sortBy.value === 'brewery') {
+          comparison = a.brewery.localeCompare(b.brewery)
+        } else if (sortBy.value === 'abv') {
+          comparison = a.abv - b.abv
+        }
+        return order.value === 'asc' ? comparison : -comparison
+      })
+  })
 
   function addBeer(beer: Beer) {
     beers.value.push(beer)
@@ -88,7 +119,11 @@ export const useBeerStore = defineStore('beer', () => {
   }
 
   return {
+    filteredBeers,
     beers,
+    search,
+    sortBy,
+    order,
     addBeer,
     deleteBeer,
     addRandomBeer,
