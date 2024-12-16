@@ -133,11 +133,11 @@ export const useBeerStore = defineStore('beer', () => {
     }
     return 0
   }
-  function addRandomBeer() {
+  /* function addRandomBeer() {
     const randomBeer = beerListRandom[Math.floor(Math.random() * beerListRandom.length)]
     beers.value.push(randomBeer)
     localStorage.setItem('beers', JSON.stringify(beers.value))
-  }
+  } */
 
   return {
     filteredBeers,
@@ -149,6 +149,6 @@ export const useBeerStore = defineStore('beer', () => {
     addReview,
     getAverageRating,
     deleteBeer,
-    addRandomBeer,
+    /* addRandomBeer, */
   }
 })
