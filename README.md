@@ -119,11 +119,15 @@ Ensure you have the following installed:
 
    - Implement an image system to store images in the cloud.
 
-3. **Random Beer Suggestion**:
+3. **Testing**:
+
+   - Implement Unit and end to end testing.
+
+4. **Random Beer Suggestion**:
 
    - Add a "Surprise Me" feature to suggest a random beer.
 
-4. **Social Sharing**:
+5. **Social Sharing**:
 
    - Enable users to share their collections with friends.
 
