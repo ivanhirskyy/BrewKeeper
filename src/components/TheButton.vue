@@ -11,17 +11,19 @@
 <script lang="ts" setup>
 defineProps<{
   type?: 'button' | 'submit' | 'reset'
-  variant: 'primary' | 'secondary' | 'tertiary'
-  size: 'sm' | 'md' | 'lg'
+  variant: 'primary' | 'secondary' | 'tertiary' | 'danger'
+  size: 'xs' | 'sm' | 'md' | 'lg'
 }>()
 
 const variants = {
   primary: 'bg-amber-300 hover:bg-amber-200 text-amber-900 focus-visible:outline-amber-400',
   secondary: 'bg-gray-100 hover:bg-gray-300 text-gray-950 focus-visible:outline-gray-600 border border-gray-300',
   tertiary: 'bg-white hover:bg-amber-100 text-amber-800 focus-visible:outline-amber-600 border border-amber-300',
+  danger: 'bg-red-100 hover:bg-red-200 text-red-800 focus-visible:outline-red-400 border border-red-200',
 }
 
 const sizes = {
+  xs: 'px-[.8rem] py-[.4rem] text-xs',
   sm: 'px-3 py-1 text-sm',
   md: 'px-4 py-2 text-base',
   lg: 'px-6 py-3 text-lg',

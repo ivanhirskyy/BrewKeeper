@@ -63,9 +63,20 @@ export const useBeerStore = defineStore('beer', () => {
     beers.value.push(beer)
     localStorage.setItem('beers', JSON.stringify(beers.value))
   }
-  function deleteBeer(index: number) {
-    beers.value.splice(index, 1)
-    localStorage.setItem('beers', JSON.stringify(beers.value))
+
+  function updateBeer(id: string, updatedBeer: Omit<Beer, 'id' | 'reviews'>) {
+    const index = beers.value.findIndex((beer) => beer.id === id)
+    if (index !== -1) {
+      beers.value[index] = { ...beers.value[index], ...updatedBeer }
+      localStorage.setItem('beers', JSON.stringify(beers.value))
+    }
+  }
+  function deleteBeer(id: string) {
+    const index = beers.value.findIndex((beer) => beer.id === id)
+    if (index !== -1) {
+      beers.value.splice(index, 1)
+      localStorage.setItem('beers', JSON.stringify(beers.value))
+    }
   }
   function addReview(id: string, rating: number, comment: string, name: string) {
     const beer = beers.value.find((beer) => beer.id === id)
@@ -98,6 +109,7 @@ export const useBeerStore = defineStore('beer', () => {
     sortBy,
     order,
     addBeer,
+    updateBeer,
     addReview,
     deleteBeer,
   }

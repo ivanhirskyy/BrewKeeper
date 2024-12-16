@@ -19,14 +19,13 @@ BrewKeeper is a fun and visually appealing web application designed for beer ent
 3. **Add New Beers**:
    - Allows users to add custom beers to their collection.
    - Input fields include name, type, year, brewery, ABV, and description.
-   - Includes form validation to ensure data integrity.
+   - Includes simple HTML form validation to ensure data integrity.
 
 ### Bonus Features
 
-- **Sorting Options**: Users can sort their collection by name, type, or year.
-- **Filtering**: Filters for browsing by type or year range.
-- **User Notes and Ratings**:
-  - Personal notes for each beer.
+- **Sorting Options**: Users can sort their collection by name, type, year...
+- **Filtering**: Filters for browsing by type or year.
+- **Ratings**:
   - 5-star rating system.
 - **Data Persistence**: Uses LocalStorage to save user data across sessions.
 
@@ -107,16 +106,17 @@ Ensure you have the following installed:
 
    - Integrate Firebase or Supabase for cloud-based collection storage.
 
-2. **Random Beer Suggestion**:
+2. **Image system**:
+
+   - Implement an image system to store images in the cloud.
+
+3. **Random Beer Suggestion**:
 
    - Add a "Surprise Me" feature to suggest a random beer.
 
-3. **Social Sharing**:
+4. **Social Sharing**:
 
    - Enable users to share their collections with friends.
-
-4. **Advanced Filtering**:
-   - Add multi-criteria filtering with a dedicated UI.
 
 ---
 

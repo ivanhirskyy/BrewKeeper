@@ -1,13 +1,16 @@
 <script lang="ts" setup>
 import type { Beer } from '@/types';
-import { computed, defineProps, ref } from 'vue'
+import { computed, defineProps, ref, markRaw } from 'vue'
 import { StarIcon } from '@heroicons/vue/20/solid'
 import TheButton from './TheButton.vue';
 import FormTextarea from './FormTextarea.vue';
 import { useBeerStore } from '../stores/beer'
+import { useModalStore } from '../stores/modal'
 import { PlusIcon } from '@heroicons/vue/24/outline'
-import { UserIcon } from '@heroicons/vue/24/solid'
+import { UserIcon, PencilSquareIcon, TrashIcon } from '@heroicons/vue/24/solid'
 import FormInput from './FormInput.vue';
+import EditBeerForm from './EditBeerForm.vue';
+import DeleteBeer from './DeleteBeer.vue';
 
 const props = defineProps<{
   beer: Beer
@@ -18,10 +21,11 @@ const rating = ref(5);
 const review = ref('');
 const name = ref('');
 
-const store = useBeerStore();
+const beerStore = useBeerStore();
+const modalStore = useModalStore();
 
 const submitReview = () => {
-  store.addReview(props.beer.id, rating.value, review.value, name.value);
+  beerStore.addReview(props.beer.id, rating.value, review.value, name.value);
   closeReview();
 }
 
@@ -49,7 +53,17 @@ const averageRating = computed(() => {
 <template>
   <div class="flex flex-col gap-2 items-start">
     <div class="mb-3">
-      <h3 class="text-2xl font-bold mb-1 text-gray-800">{{ beer.name }}</h3>
+      <div class="flex gap-4 items-center">
+        <h3 class="text-2xl font-bold mb-1 text-gray-800">{{ beer.name }}</h3>
+        <TheButton variant="primary" size="xs" @click="modalStore.open(markRaw(EditBeerForm), {beer})">
+          Edit
+          <PencilSquareIcon class="w-4 h-4 ml-1" />
+        </TheButton>
+        <TheButton variant="danger" size="xs" @click="modalStore.open(markRaw(DeleteBeer), {beer})">
+          Delete
+          <TrashIcon class="w-4 h-4 ml-1" />
+        </TheButton>
+      </div>
       <h4 class="text-lg font-semibold text-gray-800" v-if="beer.description">{{ beer.description }}</h4>
     </div>
     <div class="grid grid-cols-2 w-full gap-2">
@@ -103,6 +117,9 @@ const averageRating = computed(() => {
         </div>
       </template>
     </Transition>
+
+
+
   </div>
 </template>
 
