@@ -5,6 +5,9 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 import TheButton from './TheButton.vue';
 import FormTextarea from './FormTextarea.vue';
 import { useBeerStore } from '../stores/beer'
+import { PlusIcon } from '@heroicons/vue/24/outline'
+import { UserIcon } from '@heroicons/vue/24/solid'
+import FormInput from './FormInput.vue';
 
 const props = defineProps<{
   beer: Beer
@@ -13,11 +16,12 @@ const props = defineProps<{
 const showReviewFields = ref(false);
 const rating = ref(5);
 const review = ref('');
+const name = ref('');
 
 const store = useBeerStore();
 
 const submitReview = () => {
-  store.addReview(props.beer.id, rating.value, review.value);
+  store.addReview(props.beer.id, rating.value, review.value, name.value);
   closeReview();
 }
 
@@ -44,7 +48,10 @@ const averageRating = computed(() => {
 
 <template>
   <div class="flex flex-col gap-2 items-start">
-      <h3 class="text-2xl font-bold mb-2 text-gray-800">{{ beer.name }}</h3>
+    <div class="mb-3">
+      <h3 class="text-2xl font-bold mb-1 text-gray-800">{{ beer.name }}</h3>
+      <h4 class="text-lg font-semibold text-gray-800" v-if="beer.description">{{ beer.description }}</h4>
+    </div>
     <div class="grid grid-cols-2 w-full gap-2">
       <p class="text-sm font-semibold text-gray-800">Type: <span class="font-normal">{{ beer.type }}</span></p>
       <p class="text-sm font-semibold text-gray-800">ABV: <span class="font-normal">{{ beer.abv }}%</span></p>
@@ -56,11 +63,12 @@ const averageRating = computed(() => {
       <p class="text-sm font-semibold mt-4 text-gray-800">Reviews: <span class="font-normal">{{ averageRating }}/5</span></p>
       <div class="space-y-2 border p-2 rounded-md w-full">
         <div v-for="(review, index) in beer.reviews" :key="index" class="flex flex-col gap-1 p-2" :class="{'border-b': index !== beer.reviews.length - 1}">
+        <p class="text-sm font-semibold text-gray-800 flex items-center gap-1" v-if="review.name">Name: <UserIcon class="w-3 h-3" /> {{review.name}}</p>
         <div class="flex items-center">
           <StarIcon v-for="star in [0, 1, 2, 3, 4]" :key="star" :class="[review.rating >= star ? 'text-amber-500' : 'text-gray-200', 'size-5 shrink-0']" aria-hidden="true" />
         </div>
 
-        <p class="text-sm font-regular text-gray-800">{{ review.comment }}</p>
+        <p class="text-sm font-regular text-gray-800">Review: <span class="font-semibold">{{ review.comment }}</span></p>
         </div>
       </div>
     </template>
@@ -80,14 +88,16 @@ const averageRating = computed(() => {
                 <StarIcon v-for="star in [0, 1, 2, 3, 4]" :key="star" :class="[rating >= star ? 'text-amber-500' : 'text-gray-200', 'size-5 shrink-0 cursor-pointer transition-all']" aria-hidden="true" @click="rating = star" />
               </div>
             </div>
+              <FormInput class="w-full" type="text" label="Name" v-model="name" placeholder="John Doe" required />
               <FormTextarea class="w-full" label="Comment" v-model="review" placeholder="This beer is amazing!" required />
-              <div class="flex gap-2">
-              <TheButton variant="secondary" type="button" size="sm" @click="closeReview();">
-                Cancel
-              </TheButton>
-              <TheButton variant="primary" type="submit" size="sm">
-                Submit
-              </TheButton>
+              <div class="flex gap-2 mt-2">
+                <TheButton variant="secondary" type="button" size="sm" @click="closeReview();">
+                  Cancel
+                </TheButton>
+                <TheButton variant="primary" type="submit" size="sm">
+                  <PlusIcon class="w-4 h-4" />
+                  Add
+                </TheButton>
             </div>
           </form>
         </div>

@@ -17,7 +17,7 @@ defineProps<{
 
 const variants = {
   primary: 'bg-amber-300 hover:bg-amber-200 text-amber-900 focus-visible:outline-amber-400',
-  secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-950 focus-visible:outline-gray-600',
+  secondary: 'bg-gray-100 hover:bg-gray-300 text-gray-950 focus-visible:outline-gray-600 border border-gray-300',
   tertiary: 'bg-white hover:bg-amber-100 text-amber-800 focus-visible:outline-amber-600 border border-amber-300',
 }
 

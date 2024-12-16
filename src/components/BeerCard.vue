@@ -21,7 +21,7 @@ const averageRating = computed(() => {
 </script>
 
 <template>
-  <div class="p-4 bg-white shadow-lg rounded-xl transform transition duration-500 hover:scale-105 space-y-2">
+  <div class="p-4 bg-white shadow-lg rounded-xl transform transition duration-500 hover:scale-[1.02] space-y-2">
     <div class="flex items-center justify-between mb-4">
       <h3 class="text-lg font-bold text-gray-800">{{ beer.name }}</h3>
       <span class="text-sm text-gray-500">#{{ index + 1 }}</span>

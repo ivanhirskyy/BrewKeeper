@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:col-span-3">
+  <div>
     <label class="block text-sm font-medium text-gray-900" v-if="label" :for="id">{{
       label
     }} <span v-if="required" class="text-red-500">*</span></label>

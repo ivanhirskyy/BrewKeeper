@@ -30,7 +30,7 @@
               class="flex w-full transform text-left text-base transition md:my-8 md:max-w-xl md:px-4 lg:max-w-3xl"
             >
               <div
-                class="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl rounded-md sm:px-6 sm:pt-8 md:p-6 lg:p-8"
+                class="relative flex w-full overflow-hidden bg-white px-4 pb-8 pt-8 shadow-2xl rounded-md sm:px-6 md:p-6 lg:p-8"
               >
                 <button
                   type="button"

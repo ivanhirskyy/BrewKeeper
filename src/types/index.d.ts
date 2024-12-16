@@ -9,6 +9,7 @@ export interface Beer {
 
   reviews: {
     rating: number;
+    name: string;
     comment: string;
   }[];
 }

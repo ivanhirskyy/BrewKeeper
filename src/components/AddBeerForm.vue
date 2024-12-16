@@ -18,11 +18,11 @@
     <FormSelect
       label="Year"
       :options="
-        Array.from({ length: 2025 - 1900 }, (_, i) => ({
-          value: i + 1900,
-          label: i + 1900,
+        store.yearList.map((year) => ({
+          value: year,
+          label: year
         }))
-      "
+        "
       v-model="year"
       :required="true"
     />
@@ -31,15 +31,10 @@
       label="Type"
       :options="[
         { value: '', label: 'Select a type' },
-        { value: 'Ale', label: 'Ale' },
-        { value: 'Lager', label: 'Lager' },
-        { value: 'Stout', label: 'Stout' },
-        { value: 'IPA', label: 'IPA' },
-        { value: 'Pilsner', label: 'Pilsner' },
-        { value: 'Porter', label: 'Porter' },
-        { value: 'Sour', label: 'Sour' },
-        { value: 'Wheat', label: 'Wheat' },
-        { value: 'Other', label: 'Other' },
+        ...store.typeList.map((type) => ({
+          value: type,
+          label: type
+        })),
       ]"
       :required="true"
       v-model="type"

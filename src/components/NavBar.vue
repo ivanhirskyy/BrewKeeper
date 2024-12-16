@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 bg-white py-2 shadow-md">
+  <div class="sticky top-0 bg-white py-2 shadow-md z-10">
     <div class="container px-4 mx-auto flex items-center justify-between">
       <router-link to="/"
         ><img src="/logo.webp" alt="BrewKeeper" class="object-cover w-[150px] block" />
