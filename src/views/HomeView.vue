@@ -14,8 +14,8 @@ const modalStore = useModalStore()
 </script>
 
 <template>
-  <div class="space-y-4">
-    <div class="flex justify-between items-end">
+  <div class="space-y-6">
+    <div class="flex justify-between items-end" v-if="store.beers.length > 0">
       <FormInput
         type="text"
         v-model="store.search"
@@ -48,7 +48,7 @@ const modalStore = useModalStore()
       <template v-if="store.beers.length === 0">
         <div class="flex flex-col items-center justify-center col-span-3">
           <p class="text-center text-lg font-semibold mb-4">No beers found.</p>
-          <TheButton variant="primary" size="lg" @click="modalStore.open(AddBeerForm)">
+          <TheButton variant="primary" size="lg" @click="modalStore.open(markRaw(AddBeerForm))">
             Add Your First Beer
           </TheButton>
         </div>
